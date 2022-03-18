@@ -1,0 +1,83 @@
+.add-folder-button {
+  line-height: 0px !important;
+  padding: 10px 10px 10px 10px !important;
+  background-color: black !important;
+  color: #fff !important;
+  width: 156px;
+  height: 40px;
+  margin-left: 30px;
+}
+
+.folder-tree {
+  margin-left: 30px;
+}
+.add-folder-tool {
+  border: 1px solid gray;
+  padding: 10px 10px 10px 10px;
+  .logo {
+    width: 25px;
+    height: 25px;
+  }
+}
+.content {
+  background: #F8F8FA;
+  height: 100%;
+}
+.primary-button {
+  background-color: #000;
+  color: #fff;
+
+}
+.json-container {
+  margin-top: 15%;
+}
+.add-folder-container {
+  border: 1px solid #c7c7c7;
+  border-radius: 5px;
+  width: 300px;
+  min-width: 300px;
+  padding: 5px;
+  margin-top: 10px;
+}
+.black-button {
+  background-color: #000;
+}
+.icon-button {
+  height: 30px;
+  width: 30px;
+  min-width: 30px;
+  padding: 5px;
+  margin-left: 10px;
+  line-height: normal;
+}
+.white_icon {
+  color: #fff;
+  font-size: 18px;
+  margin-left: -1px;
+}
+.black-icon {
+  color: #000;
+  font-size: 18px;
+  margin-left: -2px;
+}
+.folder_icon {
+  width: 25px;
+  height: 25px;
+  background-color: #000;
+  margin-left: 3px;
+  line-height: normal;
+  .white_icon {
+    font-size: 12px;
+  }
+}
+::ng-deep {
+  .mat-form-field-wrapper {
+    padding-bottom: 0px; 
+  }
+  .mat-form-field-infix {
+    padding: 6px !important;
+  }
+  .mat-form-field-flex  {
+    height: 40px;
+  }
+}

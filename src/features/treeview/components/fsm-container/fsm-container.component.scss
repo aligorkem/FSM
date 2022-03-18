@@ -1,0 +1,20 @@
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  align-self: center;
+  border: 1px black;
+}
+.fix-left-margin {
+  margin-left: 10px;
+}
+.fix-margin-bottom {
+  margin-bottom: 100px;
+}
