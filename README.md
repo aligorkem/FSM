@@ -3,7 +3,7 @@
 
 <br />
 <div align="center">
-  <a href="https://github.com/aligorkem/FSM/src/assets/screenshot.png">
+  <a href="https://github.com/aligorkem/FSM/blob/main/src/assets/screenshot.png">
     <img src="src/assets/screenshot.png" alt="Logo" width=600>
   </a>
 
