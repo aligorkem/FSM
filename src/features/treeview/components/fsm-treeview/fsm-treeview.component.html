@@ -1,41 +1,52 @@
 <button mat-button class="primary-button fixLeftMargin" (click)="clickedAddFolder()">Add folder to root</button>
 <mat-tree [dataSource]="itemsList" [treeControl]="treeControl">
-  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
-    <button mat-icon-button disabled></button>
-    <mat-icon class="mat-icon-rtl-mirror">insert_drive_file</mat-icon>{{node.item}}
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding matTreeNodePaddingIndent="40">
+      <li>
+          <div class="mat-tree-node">
+              <img class="logo-icon" src="assets/images/file-regular.svg">
+              {{node.item}}
+          </div>
+      </li>
   </mat-tree-node>
 
-  <mat-tree-node *matTreeNodeDef="let node; when: hasNoContent" matTreeNodePadding>
+  <mat-tree-node *matTreeNodeDef="let node; when: hasNoContent" matTreeNodePadding matTreeNodePaddingIndent="20">
     <button mat-icon-button disabled></button>
-    <div *ngIf="showNewItem">
-      <mat-form-field class="example-full-width" appearance="outline">
-        <input matInput value="" [(ngModel)]="newFileOrFolderName">
-      </mat-form-field>
-      <button mat-button class="black-button icon-button" (click)="showFolderOrFile = true; showNewItem = false"><mat-icon class="white_icon"> check</mat-icon></button>
-      <button  mat-stroked-button class="white-button icon-button" (click)="cancelNewItem()"><mat-icon class="black-icon">close</mat-icon></button>
-    </div>
-    <div *ngIf="showFolderOrFile">
+      <div *ngIf="showNewItem" class="add-folder-container">
+          <img class="logo-icon" src="assets/images/folder-open-regular.svg">
+          <mat-form-field class="example-full-width" appearance="outline">
+              <input matInput value="" [(ngModel)]="newFileOrFolderName">
+          </mat-form-field>
+          <button mat-button class="black-button icon-button" (click)="showFolderOrFile = true; showNewItem = false">
+              <mat-icon class="white_icon"> check</mat-icon>
+          </button>
+          <button mat-stroked-button class="white-button icon-button" (click)="cancelNewItem()">
+              <mat-icon class="black-icon">close</mat-icon>
+          </button>
+      </div>
+    <div *ngIf="showFolderOrFile" class="file-folder-buttons">
       <button mat-stroked-button (click)="saveNode(node)">File</button>
       <button mat-stroked-button (click)="addFolder()">Folder</button>
     </div>
   </mat-tree-node>
 
-  <mat-tree-node *matTreeNodeDef="let node; when: hasChild;" matTreeNodePadding (mouseenter)="mouseHover(node.item)" (mouseleave)="mouseOut('')">
-    <button mat-icon-button matTreeNodeToggle 
-            [attr.aria-label]="'toggle ' + node.filename">
-      <mat-icon class="mat-icon-rtl-mirror">
-        {{treeControl.isExpanded(node) ? 'folder_copy' : 'folder_copy'}}
-      </mat-icon>
-    </button>
-    {{node.item}}
-    <div *ngIf="node.item === hoverItem">
-      <button mat-icon-button class="folder_icon" (click)="!showNewItem && !showFolderOrFile ?addNewItem(node) : null"><mat-icon class="white_icon">add</mat-icon></button>
-      <button mat-icon-button class="folder_icon" (click)="deleteFolder(node)"><mat-icon class="white_icon">delete</mat-icon></button>
-    </div>
+  <mat-tree-node *matTreeNodeDef="let node; when: hasChild;" matTreeNodePadding matTreeNodePaddingIndent="40" (mouseenter)="mouseHover(node.item)" (mouseleave)="mouseOut('')">
+    <li>
+        <div class="mat-tree-node" [ngClass]="{'add-sub-folder-container': node.item === hoverItem}">
+            <button mat-icon-button matTreeNodeToggle
+                    [attr.aria-label]="'toggle ' + node.filename">
+                <img class="logo-icon" src="assets/images/folder-open-regular.svg">
+            </button>
+            {{node.item}}
+                <button *ngIf="node.item === hoverItem" mat-icon-button class="folder_icon"(click)="!showNewItem && !showFolderOrFile ?addNewItem(node) : null"><mat-icon class="white_icon">add</mat-icon></button>
+                <button *ngIf="node.item === hoverItem" mat-icon-button class="folder_icon" (click)="deleteFolder(node)"><mat-icon class="white_icon">delete</mat-icon></button>
+        </div>
+    </li>
+
   </mat-tree-node>
 </mat-tree>
 
 <div *ngIf="showAddFolder" class="add-folder-container">
+  <img class="logo-icon" src="assets/images/folder-open-regular.svg">
   <mat-form-field class="example-full-width" appearance="outline">
     <input matInput value="" [(ngModel)]="newFolderName">
   </mat-form-field>
